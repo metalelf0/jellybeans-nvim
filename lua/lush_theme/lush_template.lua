@@ -47,8 +47,8 @@ local hsl = lush.hsl
 
 local theme = lush(function()
   return {
-    -- The following are all the Neovim default highlight groups from
-    -- docs as of 0.5.0-812, to aid your theme creation. Your themes should
+    -- The following are all the Neovim default highlight groups from the docs
+    -- as of 0.5.0-nightly-446, to aid your theme creation. Your themes should
     -- probably style all of these at a bare minimum.
     --
     -- Referenced/linked groups must come before being referenced/lined,
