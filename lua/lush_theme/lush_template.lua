@@ -204,50 +204,58 @@ local theme = lush(function()
     -- TSError -> Error for example, so you do not have to define these unless
     -- you explicitly want to support Treesitter's improved syntax awareness.
 
-    -- TSError              { }, -- For syntax/parser errors.
-    -- TSPunctDelimiter     { }, -- For delimiters ie: `.`
-    -- TSPunctBracket       { }, -- For brackets and parens.
-    -- TSPunctSpecial       { }, -- For special punctutation that does not fall in the catagories before.
-    -- TSConstant           { }, -- For constants
-    -- TSConstBuiltin       { }, -- For constant that are built in the language: `nil` in Lua.
-    -- TSConstMacro         { }, -- For constants that are defined by macros: `NULL` in C.
-    -- TSString             { }, -- For strings.
-    -- TSStringRegex        { }, -- For regexes.
-    -- TSStringEscape       { }, -- For escape characters within a string.
-    -- TSCharacter          { }, -- For characters.
-    -- TSNumber             { }, -- For integers.
-    -- TSBoolean            { }, -- For booleans.
-    -- TSFloat              { }, -- For floats.
-    -- TSFunction           { }, -- For function (calls and definitions).
-    -- TSFuncBuiltin        { }, -- For builtin functions: `table.insert` in Lua.
-    -- TSFuncMacro          { }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
-    -- TSParameter          { }, -- For parameters of a function.
-    -- TSParameterReference { }, -- For references to parameters of a function.
-    -- TSMethod             { }, -- For method calls and definitions.
-    -- TSField              { }, -- For fields.
-    -- TSProperty           { }, -- Same as `TSField`.
-    -- TSConstructor        { }, -- For constructor calls and definitions: `{ }` in Lua, and Java constructors.
-    -- TSConditional        { }, -- For keywords related to conditionnals.
-    -- TSRepeat             { }, -- For keywords related to loops.
-    -- TSLabel              { }, -- For labels: `label:` in C and `:label:` in Lua.
-    -- TSOperator           { }, -- For any operator: `+`, but also `->` and `*` in C.
-    -- TSKeyword            { }, -- For keywords that don't fall in previous categories.
-    -- TSKeywordFunction    { }, -- For keywords used to define a fuction.
-    -- TSException          { }, -- For exception related keywords.
-    -- TSType               { }, -- For types.
-    -- TSTypeBuiltin        { }, -- For builtin types (you guessed it, right ?).
-    -- TSNamespace          { }, -- For identifiers referring to modules and namespaces.
-    -- TSInclude            { }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
-    -- TSAnnotation         { }, -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
-    -- TSText               { }, -- For strings considered text in a markup language.
-    -- TSStrong             { }, -- For text to be represented with strong.
-    -- TSEmphasis           { }, -- For text to be represented with emphasis.
-    -- TSUnderline          { }, -- For text to be represented with an underline.
-    -- TSTitle              { }, -- Text that is part of a title.
-    -- TSLiteral            { }, -- Literal text.
-    -- TSURI                { }, -- Any URI like a link or email.
-    -- TSVariable           { }, -- Any variable name that does not have another highlight.
-    -- TSVariableBuiltin    { }, -- Variable names that are defined by the languages, like `this` or `self`.
+    -- TSAnnotation         { };    -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
+    -- TSAttribute          { };    -- (unstable) TODO: docs
+    -- TSBoolean            { };    -- For booleans.
+    -- TSCharacter          { };    -- For characters.
+    -- TSComment            { };    -- For comment blocks.
+    -- TSConstructor        { };    -- For constructor calls and definitions: ` { }` in Lua, and Java constructors.
+    -- TSConditional        { };    -- For keywords related to conditionnals.
+    -- TSConstant           { };    -- For constants
+    -- TSConstBuiltin       { };    -- For constant that are built in the language: `nil` in Lua.
+    -- TSConstMacro         { };    -- For constants that are defined by macros: `NULL` in C.
+    -- TSError              { };    -- For syntax/parser errors.
+    -- TSException          { };    -- For exception related keywords.
+    -- TSField              { };    -- For fields.
+    -- TSFloat              { };    -- For floats.
+    -- TSFunction           { };    -- For function (calls and definitions).
+    -- TSFuncBuiltin        { };    -- For builtin functions: `table.insert` in Lua.
+    -- TSFuncMacro          { };    -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
+    -- TSInclude            { };    -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
+    -- TSKeyword            { };    -- For keywords that don't fall in previous categories.
+    -- TSKeywordFunction    { };    -- For keywords used to define a fuction.
+    -- TSLabel              { };    -- For labels: `label:` in C and `:label:` in Lua.
+    -- TSMethod             { };    -- For method calls and definitions.
+    -- TSNamespace          { };    -- For identifiers referring to modules and namespaces.
+    -- TSNone               { };    -- TODO: docs
+    -- TSNumber             { };    -- For all numbers
+    -- TSOperator           { };    -- For any operator: `+`, but also `->` and `*` in C.
+    -- TSParameter          { };    -- For parameters of a function.
+    -- TSParameterReference { };    -- For references to parameters of a function.
+    -- TSProperty           { };    -- Same as `TSField`.
+    -- TSPunctDelimiter     { };    -- For delimiters ie: `.`
+    -- TSPunctBracket       { };    -- For brackets and parens.
+    -- TSPunctSpecial       { };    -- For special punctutation that does not fall in the catagories before.
+    -- TSRepeat             { };    -- For keywords related to loops.
+    -- TSString             { };    -- For strings.
+    -- TSStringRegex        { };    -- For regexes.
+    -- TSStringEscape       { };    -- For escape characters within a string.
+    -- TSSymbol             { };    -- For identifiers referring to symbols or atoms.
+    -- TSType               { };    -- For types.
+    -- TSTypeBuiltin        { };    -- For builtin types.
+    -- TSVariable           { };    -- Any variable name that does not have another highlight.
+    -- TSVariableBuiltin    { };    -- Variable names that are defined by the languages, like `this` or `self`.
+
+    -- TSTag                { };    -- Tags like html tag names.
+    -- TSTagDelimiter       { };    -- Tag delimiter like `<` `>` `/`
+    -- TSText               { };    -- For strings considered text in a markup language.
+    -- TSEmphasis           { };    -- For text to be represented with emphasis.
+    -- TSUnderline          { };    -- For text to be represented with an underline.
+    -- TSStrike             { };    -- For strikethrough text.
+    -- TSTitle              { };    -- Text that is part of a title.
+    -- TSLiteral            { };    -- Literal text.
+    -- TSURI                { };    -- Any URI like a link or email.
+
   }
 end)
 
