@@ -6,6 +6,8 @@ Jellybeans-nvim: a lua port of jellybeans for neovim
 Instructions
 ---
 
+**Note**: This colorscheme requires at least Neovim 0.5 (it works fine on current master).
+
 Add to your `init.lua` (this is using
 [paq-nvim](https://github.com/savq/paq-nvim), adjust to your package manager):
 
