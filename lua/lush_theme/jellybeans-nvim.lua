@@ -254,7 +254,7 @@ local theme = lush(function()
     -- LspDiagnosticsUnderlineError         { }, -- Used to underline "Error" diagnostics
     -- LspDiagnosticsUnderlineWarning       { }, -- Used to underline "Warning" diagnostics
     -- LspDiagnosticsUnderlineInformation   { }, -- Used to underline "Information" diagnostics
-    LspDiagnosticsUnderlineHint          { fg = hoki }, -- Used to underline "Hint" diagnostics
+    LspDiagnosticsUnderlineHint          { sp = hoki, gui = 'underline' }, -- Used to underline "Hint" diagnostics
 
     -- LspDiagnosticsFloatingError          { }, -- Used to color "Error" diagnostic messages in diagnostics float
     -- LspDiagnosticsFloatingWarning        { }, -- Used to color "Warning" diagnostic messages in diagnostics float
