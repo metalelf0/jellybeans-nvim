@@ -11,13 +11,16 @@ Instructions
 Add to your `init.lua` (this is using
 [paq-nvim](https://github.com/savq/paq-nvim), adjust to your package manager):
 
-```
+```lua
 local paq = require('paq-nvim').paq
 
 paq { 'rktjmp/lush.nvim'}
 paq { 'metalelf0/jellybeans-nvim' }
 
 cmd('colorscheme jellybeans-nvim')
+
+-- For italic comments (false by default)
+vim.g.jellybeans_italic_comments = true
 ```
 
 Notes
