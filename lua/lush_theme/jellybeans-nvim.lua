@@ -95,6 +95,18 @@ local tea_green  =hsl("#d2ebbe")
 local dell = hsl("#437019")
 local calypso = hsl("#2B5B77")
 
+-- Italics comments functionality
+
+local italic_style = ''
+
+if vim.g.jellybeans_italic_comments then
+    italic_style = 'italic'
+else
+    italic_style = ''
+end
+
+--
+
 local theme = lush(function()
   return {
     -- The following are all the Neovim default highlight groups from the docs
@@ -109,7 +121,7 @@ local theme = lush(function()
     -- styling for that group (meaning they mostly get styled as Normal)
     -- or leave them commented to apply vims default colouring or linking.
 
-    Comment      { fg = grey }, -- any comment
+    Comment      { fg = grey, gui = italic_style }, -- italic comment
     ColorColumn  { bg = total_black }, -- used for the columns set with 'colorcolumn'
     Conceal      { fg = morning_glory }, -- placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor       { fg = background, bg = perano }, -- character under the cursor
@@ -230,29 +242,29 @@ local theme = lush(function()
     -- LspReferenceWrite                    { }, -- used for highlighting "write" references
 
     -- LspDiagnosticsDefaultError           { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    -- LspDiagnosticsDefaultWarning         { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    -- LspDiagnosticsDefaultWarning         { },  -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
     -- LspDiagnosticsDefaultInformation     { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    -- LspDiagnosticsDefaultHint            { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    -- LspDiagnosticsDefaultHint            { },   -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 
-    LspDiagnosticsVirtualTextError       { fg = 'old_brick' }, -- Used for "Error" diagnostic virtual text
-    LspDiagnosticsVirtualTextWarning     { fg = 'koromiko' },  -- Used for "Warning" diagnostic virtual text
-    LspDiagnosticsVirtualTextInformation { fg = 'goldenrod' }, -- Used for "Information" diagnostic virtual text
-    LspDiagnosticsVirtualTextHint        { fg = 'calypso' },   -- Used for "Hint" diagnostic virtual text
+    LspDiagnosticsVirtualTextError       { fg = old_brick }, -- Used for "Error" diagnostic virtual text
+    LspDiagnosticsVirtualTextWarning     { fg = raw_sienna },  -- Used for "Warning" diagnostic virtual text
+    LspDiagnosticsVirtualTextInformation { fg = koromiko }, -- Used for "Information" diagnostic virtual text
+    LspDiagnosticsVirtualTextHint        { fg = hoki },   -- Used for "Hint" diagnostic virtual text
 
     -- LspDiagnosticsUnderlineError         { }, -- Used to underline "Error" diagnostics
     -- LspDiagnosticsUnderlineWarning       { }, -- Used to underline "Warning" diagnostics
     -- LspDiagnosticsUnderlineInformation   { }, -- Used to underline "Information" diagnostics
-    LspDiagnosticsUnderlineHint          { fg = 'bayoux_blue' }, -- Used to underline "Hint" diagnostics
+    LspDiagnosticsUnderlineHint          { fg = hoki }, -- Used to underline "Hint" diagnostics
 
     -- LspDiagnosticsFloatingError          { }, -- Used to color "Error" diagnostic messages in diagnostics float
     -- LspDiagnosticsFloatingWarning        { }, -- Used to color "Warning" diagnostic messages in diagnostics float
     -- LspDiagnosticsFloatingInformation    { }, -- Used to color "Information" diagnostic messages in diagnostics float
     -- LspDiagnosticsFloatingHint           { }, -- Used to color "Hint" diagnostic messages in diagnostics float
 
-    LspDiagnosticsSignError              { fg = 'old_brick' }, -- Used for "Error" signs in sign column
-    LspDiagnosticsSignWarning            { fg = 'koromiko' },  -- Used for "Warning" signs in sign column
-    LspDiagnosticsSignInformation        { fg = 'goldenrod' }, -- Used for "Information" signs in sign column
-    LspDiagnosticsSignHint               { fg = 'calypso' },   -- Used for "Hint" signs in sign column
+    LspDiagnosticsSignError              { fg = old_brick }, -- Used for "Error" signs in sign column
+    LspDiagnosticsSignWarning            { fg = raw_sienna },  -- Used for "Warning" signs in sign column
+    LspDiagnosticsSignInformation        { fg = koromiko }, -- Used for "Information" signs in sign column
+    LspDiagnosticsSignHint               { fg = hoki },   -- Used for "Hint" signs in sign column
 
     -- These groups are for the neovim tree-sitter highlights.
     -- As of writing, tree-sitter support is a WIP, group names may change.
@@ -317,22 +329,21 @@ local theme = lush(function()
     GitSignsAdd    { fg = '#587C0C' },
     GitSignsChange { fg = '#0C7D9D' },
     GitSignsDelete { fg = '#94151B' },
-
     -- These groups are for the Nvim Tree
         --
-    NvimTreeImageFile     { fg = 'purple' },
-    NvimTreeGitDirty      { fg = 'raw_sienna' },
-    NvimTreeGitDeleted    { fg = 'old_brick' },
-    NvimTreeGitStaged     { fg = 'dell' }, 
-    NvimTreeGitMerge      { fg = 'dell' }, 
-    NvimTreeGitRenamed    { fg = 'koromiko' }, 
-    NvimTreeGitNew        { fg = 'koromiko' }, 
-    NvimTreeIndentMarker  { fg = 'grey' }, 
-    NvimTreeSymlink       { fg = 'green_smoke' }, 
-    NvimTreeFolderIcon    { fg = 'calypso' }, 
-    NvimTreeRootFolder    { fg = 'grey_chateau' }, 
-    NvimTreeExecFile      { fg = 'tea_green' }, 
-    NvimTreeSpecialFile   { fg = 'goldenrod' }, 
+    NvimTreeImageFile     { fg = wewak },
+    NvimTreeGitDirty      { fg = raw_sienna },
+    NvimTreeGitDeleted    { fg = old_brick },
+    NvimTreeGitStaged     { fg = dell }, 
+    NvimTreeGitMerge      { fg = dell }, 
+    NvimTreeGitRenamed    { fg = koromiko }, 
+    NvimTreeGitNew        { fg = koromiko }, 
+    NvimTreeIndentMarker  { fg = grey }, 
+    NvimTreeSymlink       { fg = green_smoke }, 
+    NvimTreeFolderIcon    { fg = calypso }, 
+    NvimTreeRootFolder    { fg = grey_chateau }, 
+    NvimTreeExecFile      { fg = tea_green }, 
+    NvimTreeSpecialFile   { fg = goldenrod } 
   }
 end)
 
