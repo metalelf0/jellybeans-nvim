@@ -233,6 +233,14 @@ local theme = lush(function()
 
     Todo           { fg = silver }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
+    -- These groups are for the Markdown syntax. Some other LSP clients may
+    markdownH1					 { fg = wewak, gui = "bold" },
+    markdownH2					 { fg = perano, gui = "bold" },
+    markdownH3					 { fg = mantis, gui = "bold" },
+    markdownH1Delimiter  { fg = wewak },
+    markdownH2Delimiter  { fg = perano },
+    markdownH3Delimiter  { fg = mantis },
+
     -- These groups are for the native LSP client. Some other LSP clients may
     -- use these groups, or use their own. Consult your LSP client's
     -- documentation.
