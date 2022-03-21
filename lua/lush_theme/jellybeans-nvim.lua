@@ -126,15 +126,15 @@ local theme = lush(function()
     -- TermCursor   { }, -- cursor in a focused terminal
     -- TermCursorNC { }, -- cursor in an unfocused terminal
     ErrorMsg     { bg = old_brick }, -- error messages on the command line
-    VertSplit    { fg = boulder, bg = gravel }, -- the column separating vertically split windows
+    VertSplit    { fg = gravel }, -- the column separating vertically split windows
     Folded       { fg = grey_chateau, bg = bright_grey }, -- line used for closed folds
     FoldColumn   { fg = shuttle_grey, bg = mine_shaft }, -- 'foldcolumn'
-    SignColumn   { fg = boulder, bg = grey_three }, -- column where |signs| are displayed
+    SignColumn   { fg = boulder }, -- column where |signs| are displayed
     -- IncSearch    { }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     -- Substitute   { }, -- |:substitute| replacement text highlighting
     LineNr       { fg = zambezi }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     CursorLineNr { fg = silver_rust }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-    MatchParen   { fg = total_white, bg = bayoux_blue }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    MatchParen   { fg = wewak, gui="bold" }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     -- ModeMsg      { }, -- 'showmode' message (e.g., "-- INSERT -- ")
     -- MsgArea      { }, -- Area for messages and cmdline
     -- MsgSeparator { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
@@ -143,8 +143,8 @@ local theme = lush(function()
     Normal       { bg = background, fg = foreground }, -- normal text
     -- NormalFloat  { }, -- Normal text in floating windows.
     -- NormalNC     { }, -- normal text in non-current windows
-    Pmenu        { fg = total_white, bg = scorpion }, -- Popup menu: normal item.
-    PmenuSel     { fg = total_white, bg = cod_grey }, -- Popup menu: selected item.
+    Pmenu        { fg = total_white, bg = background.lighten(4) }, -- Popup menu: normal item.
+    PmenuSel     { fg = total_black, bg = ship_cove, gui = "bold" }, -- Popup menu: selected item.
     -- PmenuSbar    { }, -- Popup menu: scrollbar.
     -- PmenuThumb   { }, -- Popup menu: Thumb of the scrollbar.
     Question     { fg = mantis }, -- |hit-enter| prompt and yes/no questions
@@ -155,8 +155,8 @@ local theme = lush(function()
     SpellCap     { bg = dark_blue }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     SpellLocal   { bg = casal }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     SpellRare    { bg = ripe_plum }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
-    StatusLine   { fg = total_black, bg = alto }, -- status line of current window
-    StatusLineNC { fg = total_white, bg = gravel }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+    StatusLine   { fg = total_white, bg = grey_one }, -- status line of current window
+    StatusLineNC { fg = silver, bg = grey_one }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     TabLine      { fg = total_black, bg = cadet_blue }, -- tab pages line, not active tab page label
     TabLineFill  { fg = regent_grey }, -- tab pages line, where there are no labels
     TabLineSel   { fg = total_black, bg = grey_two }, -- tab pages line, active tab page label
@@ -184,7 +184,7 @@ local theme = lush(function()
     Identifier     { fg = biloba_flower }, -- (preferred) any variable name
     Function       { fg = goldenrod }, -- function name (also: methods for classes)
 
-    Statement      { fg = ship_cove }, -- (preferred) any statement
+    Statement      { fg = perano }, -- (preferred) any statement
     -- Conditional    { }, --  if, then, else, endif, switch, etc.
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --    case, default, etc.
@@ -192,27 +192,27 @@ local theme = lush(function()
     -- Keyword        { }, --  any other keyword
     -- Exception      { }, --  try, catch, throw
 
-    PreProc        { fg = morning_glory }, -- (preferred) generic Preprocessor
-    -- Include        { }, --  preprocessor #include
+    PreProc        { fg = ship_cove }, -- (preferred) generic Preprocessor
+    Include        { PreProc, gui = "italic" }, --  preprocessor #include
     -- Define         { }, --   preprocessor #define
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
 
-    Type           { fg = koromiko }, -- (preferred) int, long, char, etc.
+    Type           { fg = koromiko, gui="italic" }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
     Structure      { fg = morning_glory }, --  struct, union, enum, etc.
     -- Typedef        { }, --  A typedef
 
-    Special        { fg = highland }, -- (preferred) any special symbol
+    Special        { fg = hsl(155, 30, 65) }, -- highland -- (preferred) any special symbol
     -- SpecialChar    { }, --  special character in a constant
     -- Tag            { }, --    you can use CTRL-] on this
     Delimiter      { fg = hoki }, --  character that needs attention
     -- SpecialComment { }, -- special things inside a comment
     -- Debug          { }, --    debugging statements
 
-    -- Underlined { gui = "underline" }, -- (preferred) text that stands out, HTML links
-    -- Bold       { gui = "bold" },
-    -- Italic     { gui = "italic" },
+    Underlined { gui = "underline" }, -- (preferred) text that stands out, HTML links
+    Bold       { gui = "bold" },
+    Italic     { gui = "italic" },
 
     -- ("Ignore", below, may be invisible...)
     -- Ignore         { }, -- (preferred) left blank, hidden  |hl-Ignore|
@@ -225,24 +225,24 @@ local theme = lush(function()
     -- use these groups, or use their own. Consult your LSP client's
     -- documentation.
 
-    -- LspReferenceText                     { }, -- used for highlighting "text" references
-    -- LspReferenceRead                     { }, -- used for highlighting "read" references
-    -- LspReferenceWrite                    { }, -- used for highlighting "write" references
+    LspReferenceText                     { bg=background.lighten(8) }, -- used for highlighting "text" references
+    LspReferenceRead                     { bg=background.lighten(8) }, -- used for highlighting "read" references
+    LspReferenceWrite                    { bg=background.lighten(8) }, -- used for highlighting "write" references
 
-    -- LspDiagnosticsDefaultError           { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    -- LspDiagnosticsDefaultWarning         { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    -- LspDiagnosticsDefaultInformation     { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    -- LspDiagnosticsDefaultHint            { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultError           { fg = old_brick.lighten(20) }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultWarning         { fg = koromiko }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultInformation     { fg = perano }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultHint            { fg = tea_green }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 
-    -- LspDiagnosticsVirtualTextError       { }, -- Used for "Error" diagnostic virtual text
-    -- LspDiagnosticsVirtualTextWarning     { }, -- Used for "Warning" diagnostic virtual text
-    -- LspDiagnosticsVirtualTextInformation { }, -- Used for "Information" diagnostic virtual text
-    -- LspDiagnosticsVirtualTextHint        { }, -- Used for "Hint" diagnostic virtual text
+    LspDiagnosticsVirtualTextError       { LspDiagnosticsDefaultError, bg = old_brick.darken(72) }, -- Used for "Error" diagnostic virtual text
+    LspDiagnosticsVirtualTextWarning     { LspDiagnosticsDefaultWarning, bg = koromiko.darken(88) }, -- Used for "Warning" diagnostic virtual text
+    LspDiagnosticsVirtualTextInformation { LspDiagnosticsDefaultInformation, bg = perano.darken(87) }, -- Used for "Information" diagnostic virtual text
+    LspDiagnosticsVirtualTextHint        { LspDiagnosticsDefaultHint, bg = tea_green.darken(90) }, -- Used for "Hint" diagnostic virtual text
 
-    -- LspDiagnosticsUnderlineError         { }, -- Used to underline "Error" diagnostics
-    -- LspDiagnosticsUnderlineWarning       { }, -- Used to underline "Warning" diagnostics
-    -- LspDiagnosticsUnderlineInformation   { }, -- Used to underline "Information" diagnostics
-    -- LspDiagnosticsUnderlineHint          { }, -- Used to underline "Hint" diagnostics
+    LspDiagnosticsUnderlineError         { sp = old_brick.lighten(20), gui="undercurl" }, -- Used to underline "Error" diagnostics
+    LspDiagnosticsUnderlineWarning       { sp = koromiko, gui="undercurl" }, -- Used to underline "Warning" diagnostics
+    LspDiagnosticsUnderlineInformation   { sp = perano, gui="undercurl" }, -- Used to underline "Information" diagnostics
+    LspDiagnosticsUnderlineHint          { sp = tea_green, gui="undercurl" }, -- Used to underline "Hint" diagnostics
 
     -- LspDiagnosticsFloatingError          { }, -- Used to color "Error" diagnostic messages in diagnostics float
     -- LspDiagnosticsFloatingWarning        { }, -- Used to color "Warning" diagnostic messages in diagnostics float
@@ -282,7 +282,7 @@ local theme = lush(function()
     -- TSKeywordFunction    { };    -- For keywords used to define a fuction.
     -- TSLabel              { };    -- For labels: `label:` in C and `:label:` in Lua.
     -- TSMethod             { };    -- For method calls and definitions.
-    -- TSNamespace          { };    -- For identifiers referring to modules and namespaces.
+    TSNamespace          { fg = wewak };    -- For identifiers referring to modules and namespaces.
     -- TSNone               { };    -- TODO: docs
     -- TSNumber             { };    -- For all numbers
     -- TSOperator           { };    -- For any operator: `+`, but also `->` and `*` in C.
@@ -299,19 +299,48 @@ local theme = lush(function()
     -- TSSymbol             { };    -- For identifiers referring to symbols or atoms.
     -- TSType               { };    -- For types.
     -- TSTypeBuiltin        { };    -- For builtin types.
-    -- TSVariable           { };    -- Any variable name that does not have another highlight.
+    TSVariable           { Normal };    -- Any variable name that does not have another highlight.
     -- TSVariableBuiltin    { };    -- Variable names that are defined by the languages, like `this` or `self`.
 
     -- TSTag                { };    -- Tags like html tag names.
-    -- TSTagDelimiter       { };    -- Tag delimiter like `<` `>` `/`
+    TSTagDelimiter       { fg = bayoux_blue };    -- Tag delimiter like `<` `>` `/`
     -- TSText               { };    -- For strings considered text in a markup language.
-    -- TSEmphasis           { };    -- For text to be represented with emphasis.
-    -- TSUnderline          { };    -- For text to be represented with an underline.
-    -- TSStrike             { };    -- For strikethrough text.
+    TSEmphasis           { Italic };    -- For text to be represented with emphasis.
+    TSUnderline          { Underlined };    -- For text to be represented with an underline.
+    TSStrike             { gui="strikethrough" };    -- For strikethrough text.
     -- TSTitle              { };    -- Text that is part of a title.
     -- TSLiteral            { };    -- Literal text.
-    -- TSURI                { };    -- Any URI like a link or email.
+    TSURI                { fg = morning_glory };    -- Any URI like a link or email.
 
+    -- HTML
+    htmlLink { };
+
+    -- GitSigns
+    GitSignsAdd    { fg = mantis };
+    GitSignsChange { fg = koromiko };
+    GitSignsDelete { fg = old_brick.lighten(20) };
+
+    -- Telescope
+    TelescopeBorder { fg = ship_cove };
+    TelescopeSelection { fg = ship_cove.lighten(46), bg = ship_cove.darken(74) };
+    TelescopeMatching { Search };
+    TelescopeSelectionCaret { fg = koromiko };
+    TelescopePromptPrefix { fg = koromiko };
+
+    -- vim-sneak
+
+    Sneak { Search };
+
+    -- nvim-tree
+
+    NvimTreeRootFolder       { Directory, gui = "bold" };
+
+    NvimTreeGitDirty   { GitSignsChange };
+    NvimTreeGitStaged  { fg = tea_green };
+    NvimTreeGitMerge   { GitSignsChange };
+    NvimTreeGitRenamed { GitSignsChange };
+    NvimTreeGitNew     { GitSignsAdd };
+    NvimTreeGitDeleted { GitSignsDelete };
   }
 end)
 
