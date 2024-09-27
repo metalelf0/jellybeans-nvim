@@ -35,3 +35,5 @@ Notes
 
 * this was built with [lush.nvim](http://git.io/lush.nvim); for more
   information on Lush and a helper script to setup your repo clone.
+
+* Please ensure that the *termguicolor* option in your init.lua file is activated  `vim.opt.termguicolors = true`
